@@ -1,0 +1,42 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/user/Desktop/robotic_project/stm32_sbr/include",
+                "/home/user/Desktop/robotic_project/stm32_sbr/src",
+                "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
+                "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/user/Desktop/robotic_project/stm32_sbr/include",
+                    "/home/user/Desktop/robotic_project/stm32_sbr/src",
+                    "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
+                    "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=50205",
+                "STM32F303xE",
+                "F_CPU=72000000L",
+                ""
+            ],
+            "compilerPath": "/home/user/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mthumb",
+                "-mcpu=cortex-m4",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
