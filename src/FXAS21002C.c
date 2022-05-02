@@ -3,6 +3,7 @@
 
 void FXAS21002C_Init(void){
     //Page 46 of datasheet
+    //IIC_Init();
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG1, 0x00);    //Standby
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG1, (1 << 6));//Reset
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG0, 0x03);    //Set sensitivity = +/- 250

@@ -11,6 +11,7 @@
 
 //#define USART_Example
 //#define PWM_Example
+//#define IIC_Debug
 #define IIC_Example
 void Robot_Init(){
 	/***************************************/
@@ -30,10 +31,10 @@ void Robot_Init(){
     SystemTick_Init();
 	FXOS8700_Init();
 	FXAS21002C_Init();
-	PWM_TIM3_Init(719, 99);
-	//RCC->AHBENR |= RCC_AHBENR_GPIOAEN;//LED enable
-	//GPIOA->MODER |= 0b01 << (5 * 2);//LED Mode Setting
-	//RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
+	//PWM_TIM3_Init(719, 99);
+	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;//LED enable
+	GPIOA->MODER |= 0b01 << (5 * 2);//LED Mode Setting
+	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
 }
 
 //if SystemClock = 72M
@@ -44,7 +45,7 @@ int main(void){
 	#ifdef USART_Example
 		uint32_t count = 0;
 	#endif
-	#ifdef IIC_Example
+	#ifdef IIC_Debug
 		uint32_t count = 0;
 	#endif
 	
@@ -59,11 +60,17 @@ int main(void){
 		PWM_TIM3_Control(4, 100);//PC8
 		PWM_TIM3_Control(2, 100);
 		#endif
-		#ifdef IIC_Example
+		#ifdef IIC_Debug
 			printf("scan %ld\n", count);
 			Delay_Us(1000000);
 			count++;
 			IIC_Scan();
 		#endif
+		#ifdef IIC_Example
+			printf("%lf\n", (double)(get_Gyro_Z() / 3.14) * 180);
+			//printf("%f\n", (float)get_Accelerometer_Y());
+			
+			Delay_Us(500000);
+		#endif 
 	}
 }
