@@ -3,8 +3,8 @@
 #include <usart.h>
 #include <FXOS8700.h>
 #include <FXAS21002C.h>
-#include <stdbool.h>
 #include <pwm.h>
+#include <stdbool.h>
 
 #define LED_On {GPIOA->ODR |= (1 << 5);}
 #define LED_Off {GPIOA->ODR &= ~(1 << 5);}
@@ -12,7 +12,7 @@
 //#define USART_Example
 //#define PWM_Example
 //#define IIC_Debug
-#define IIC_Example
+//#define IIC_Example
 void Robot_Init(){
 	/***************************************/
 	RCC->CR |= 1 << 0;//1: HSI oscillator ON
@@ -32,13 +32,24 @@ void Robot_Init(){
 	FXOS8700_Init();
 	FXAS21002C_Init();
 	//PWM_TIM3_Init(719, 99);
-	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;//LED enable
-	GPIOA->MODER |= 0b01 << (5 * 2);//LED Mode Setting
-	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
+	//RCC->AHBENR |= RCC_AHBENR_GPIOAEN;//LED enable
+	//GPIOA->MODER |= 0b01 << (5 * 2);//LED Mode Setting
+	//RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
 }
 
-//if SystemClock = 72M
 
+int main(void){
+	Robot_Init();
+	while(1){
+		//PWM_TIM3_Control(4, 100);
+		//PWM_TIM3_Control(2, 100);
+		printf("\n--- start ---\n");
+		printf("%f\n", (get_Gyro_X() / 3.14) * 180);
+		Delay_Us(5000000);
+	}
+}
+//if SystemClock = 72M
+/*
 int main(void){
 	Robot_Init();
 
@@ -73,4 +84,4 @@ int main(void){
 			Delay_Us(500000);
 		#endif 
 	}
-}
+}*/

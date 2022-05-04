@@ -78,13 +78,11 @@ int _kill(int pid, int sig)
 	return -1;
 }
 
-int __io_getchar(){
-	 while((USART2->ISR & USART_ISR_RXNE) == 0 ){
-		 ;
-	 }
-	 return USART2->RDR;
+void _exit (int status)
+{
+	_kill(status, -1);
+	while (1) {}		/* Make sure we hang here */
 }
-
 
 int __io_putchar(int c){
 	if(c == '\n'){
@@ -97,10 +95,11 @@ int __io_putchar(int c){
 	return c;
 }
 
-void _exit (int status)
-{
-	_kill(status, -1);
-	while (1) {}		/* Make sure we hang here */
+int __io_getchar(){
+	 while((USART2->ISR & USART_ISR_RXNE) == 0 ){
+		 ;
+	 }
+	 return USART2->RDR;
 }
 
 int _read (int file, char *ptr, int len)
@@ -217,4 +216,3 @@ int _execve(char *name, char **argv, char **env)
 	errno = ENOMEM;
 	return -1;
 }
-

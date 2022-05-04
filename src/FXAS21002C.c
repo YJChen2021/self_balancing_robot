@@ -8,7 +8,7 @@ void FXAS21002C_Init(void){
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG1, (1 << 6));//Reset
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG0, 0x03);    //Set sensitivity = +/- 250
     Single_Byte_Write(Gyro, FXAS21002C_REGISTER_CTRL_REG1, 0x06);    //Active + output data rate = 400
-    // write 0 0 0 001 1 0 = 0x06 to gyro control register 1
+    // write 0000 0110 = 0x06 to gyro control register 1
     // [7]: -
     // [6]: RST=0 to disable the software reset
     // [5]: ST=0 to disable the Self-Test

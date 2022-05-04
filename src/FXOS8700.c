@@ -7,7 +7,7 @@ void FXOS8700_Init(void){
 	//Page 42 of datasheet
     Single_Byte_Write(Accelerometer, FXOS8700_REGISTER_CTRL_REG1, 0x00);//Reset
 	Single_Byte_Write(Accelerometer, FXOS8700_REGISTER_CTRL_REG1, 0x0D);//Configuration and Enable
-	// write 00 001 1 0 1 = 0x0D to accelerometer control register 1
+	// write 0000 1101 = 0x0D to accelerometer control register 1
 	// [7-6]: aslp_rate=00
 	// [5-3]: dr=001 for 400Hz data rate (only accelerometer mode - [1:0] in M_CTRL_REG1)
 	// [2]: lnoise=1 for low noise mode
