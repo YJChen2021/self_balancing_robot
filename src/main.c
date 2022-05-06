@@ -5,6 +5,7 @@
 #include <FXAS21002C.h>
 #include <pwm.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define LED_On {GPIOA->ODR |= (1 << 5);}
 #define LED_Off {GPIOA->ODR &= ~(1 << 5);}
@@ -40,12 +41,35 @@ void Robot_Init(){
 
 int main(void){
 	Robot_Init();
+	double gyro = 0;
+	double phi = 0;
+	double offset_gyro = 0;
+	double offset_acc  = 0;
+	float dt  = 0.01;
+	for(uint8_t i = 0; i < 100; i++){
+		offset_gyro += get_Gyro_X();
+		offset_acc += get_Accelerometer_Y();
+		//Delay_Us(10000);
+	}
+	offset_gyro = offset_gyro / 100;
+	offset_acc = offset_acc / 100;
 	while(1){
 		//PWM_TIM3_Control(4, 100);
 		//PWM_TIM3_Control(2, 100);
-		printf("\n--- start ---\n");
-		printf("%f\n", (get_Gyro_X() / 3.14) * 180);
-		Delay_Us(5000000);
+		/*
+		gyro = ((get_Gyro_X() - offset_gyro) / 3.14) * 180;
+		double acc  = ((get_Accelerometer_Y() - offset_acc) / 3.14) * 180;
+		phi = (phi + gyro * dt) * 0.98 + acc * 0.02;
+		*/
+		gyro = get_Gyro_X() - offset_gyro;
+		double acc  = get_Accelerometer_Y() - offset_acc;
+		phi = (phi + gyro * dt) * 0.98 + acc * 0.02;
+		
+		//phi = gyro * 0.98 + (get_Accelerometer_Y() - offset_acc) * 0.02;
+		//printf("%f\n", fmod(92.0, 5.0));
+		printf("phi = %f\n", 180 * (phi /  3.14));
+		//printf("acc = %lf\n", get_Accelerometer_Y());
+		Delay_Us(10000);
 	}
 }
 //if SystemClock = 72M

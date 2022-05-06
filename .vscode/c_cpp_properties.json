@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/user/Desktop/self_balancing_robot/include",
-                "/home/user/Desktop/self_balancing_robot/src",
+                "/home/user/Desktop/robotic_project/self_balancing_robot/include",
+                "/home/user/Desktop/robotic_project/self_balancing_robot/src",
                 "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
                 "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
                 ""
@@ -17,8 +17,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/user/Desktop/self_balancing_robot/include",
-                    "/home/user/Desktop/self_balancing_robot/src",
+                    "/home/user/Desktop/robotic_project/self_balancing_robot/include",
+                    "/home/user/Desktop/robotic_project/self_balancing_robot/src",
                     "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
                     "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
                     ""
