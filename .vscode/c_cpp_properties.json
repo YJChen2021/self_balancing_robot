@@ -10,7 +10,7 @@
             "includePath": [
                 "/home/user/Desktop/robotic_project/self_balancing_robot/include",
                 "/home/user/Desktop/robotic_project/self_balancing_robot/src",
-                "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
+                "/home/user/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
                 "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
                 ""
             ],
@@ -19,18 +19,18 @@
                 "path": [
                     "/home/user/Desktop/robotic_project/self_balancing_robot/include",
                     "/home/user/Desktop/robotic_project/self_balancing_robot/src",
-                    "/home/user/.platformio/packages/framework-cmsis/CMSIS/Include",
+                    "/home/user/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
                     "/home/user/.platformio/packages/framework-cmsis-stm32f3/Include",
                     ""
                 ]
             },
             "defines": [
-                "PLATFORMIO=50205",
+                "PLATFORMIO=60001",
                 "STM32F303xE",
                 "F_CPU=72000000L",
                 ""
             ],
-            "compilerPath": "/home/user/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc",
+            "compilerPath": "/home/user/.platformio/packages/toolchain-gccarmnoneeabi@1.70201.0/bin/arm-none-eabi-gcc",
             "compilerArgs": [
                 "-mthumb",
                 "-mcpu=cortex-m4",
